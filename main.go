@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 )
 
 var (
@@ -78,7 +79,146 @@ func main() {
 	fmt.Println(s1[2:4])
 
 	m := map[string]int{"Mike": 20, "Nancy": 24, "Messi": 30}
-	fmt.Printf("%T %v", m, m)
+	fmt.Printf("%T %v\n", m, m)
+
+	num := 4
+	if num%2 == 0 {
+		fmt.Println("by 2")
+	} else if num%3 == 0 {
+		fmt.Println("by 3")
+	} else {
+		fmt.Println("else")
+	}
+	if result := 2; result%2 == 0 {
+		fmt.Println("ok")
+	}
+
+	for i := 0; i < 10; i++ {
+		if i == 3 {
+			fmt.Println("continue")
+			continue
+		}
+		if i > 5 {
+			fmt.Println("break")
+			break
+		}
+		fmt.Println(i)
+	}
+
+	sum := 1
+	for sum < 10 {
+		sum += sum
+		fmt.Println(sum)
+	}
+	fmt.Println(sum)
+
+	l := []string{"python", "go", "java"}
+	for i, v := range l {
+		fmt.Println(i, v)
+	}
+	for _, v := range l {
+		fmt.Println(v)
+	}
+
+	m2 := map[string]int{"apple": 100, "banana": 500}
+	for k, v := range m2 {
+		fmt.Println(k, v)
+	}
+	for k := range m2 {
+		fmt.Println(k)
+	}
+	for _, v := range m2 {
+		fmt.Println(v)
+	}
+
+	os := "mac"
+	switch os {
+	case "mac":
+		fmt.Println("mac!")
+	case "windows":
+		fmt.Println("windows!")
+	default:
+		fmt.Println("default!")
+	}
+
+	switch os1 := "windows"; os1 {
+	case "mac":
+		fmt.Println("mac!")
+	case "windows":
+		fmt.Println("windows!")
+	default:
+		fmt.Println("default!")
+	}
+
+	t1 := time.Now()
+	fmt.Println(t1.Hour())
+
+	foo2()
+	defer fmt.Println("world")
+	fmt.Println("hello")
+
+	fmt.Println("run")
+	defer fmt.Println(1)
+	defer fmt.Println(2)
+	defer fmt.Println(3)
+	fmt.Println("success")
+
+	l1 := []int{100, 300, 23, 11, 23, 2, 4, 6, 4}
+
+	x1 := l1[0]
+
+	for i = 0; i < len(l1); i++ {
+		if x1 > l1[i] {
+			x1 = l1[i]
+		}
+	}
+	fmt.Printf("最小値は%vです\n", x1)
+
+	m1 := map[string]int{
+		"apple":  200,
+		"banana": 300,
+		"grapes": 150,
+		"orange": 80,
+		"papaya": 500,
+		"kiwi":   90,
+	}
+	sum1 := 0
+	for _, v := range m1 {
+		sum1 += v
+	}
+	fmt.Printf("合計は%vです\n", sum1)
+
+	n := 100
+	fmt.Println(n)
+
+	fmt.Printf("%T %v\n", &n, &n)
+	fmt.Printf("%T %v\n", n, n)
+	// fmt.Printf("%T %v\n", *&n, *&n)
+
+	// var p *int = &n
+	// fmt.Println(p)
+	// fmt.Println(*p)
+
+	// one(&n)
+	// fmt.Println(n)
+
+	var p1 *int = new(int)
+	fmt.Println(p1)
+	// => メモリを確保しているのでポインタが出力される
+
+	var p2 *int
+	fmt.Println(p2)
+	// => メモリを確保していないのでnil
+
+}
+
+// func one(x *int) {
+// 	*x = 1
+// }
+
+func foo2() {
+	defer fmt.Println("world foo")
+	fmt.Println("hello foo")
 }
 
 // func buzz() {
