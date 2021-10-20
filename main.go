@@ -210,6 +210,47 @@ func main() {
 	fmt.Println(p2)
 	// => メモリを確保していないのでnil
 
+	v := Vertex{X: 1, Y: 2}
+	fmt.Println(v)
+	fmt.Println(v.X, v.Y)
+	v.X = 300
+	fmt.Println(v.X, v.Y)
+
+	v3 := Vertex{1, 2, "test"}
+	fmt.Println(v3)
+
+	v4 := Vertex{}
+	fmt.Printf("%T %v\n", v4, v4)
+
+	var v5 Vertex
+	fmt.Printf("%T %v\n", v5, v5)
+
+	v6 := new(Vertex)
+	fmt.Printf("%T %v\n", v6, v6)
+
+	v7 := &Vertex{}
+	fmt.Printf("%T %v\n", v7, v7)
+
+	var i int = 100
+	var j int = 200
+	var p3 *int
+	var p4 *int
+	p3 = &i
+	p4 = &j
+	i = *p3 + *p4
+	p4 = p3
+	j = *p4 + i
+	fmt.Println(j)
+
+	learning()
+	goroutine()
+
+}
+
+type Vertex struct {
+	X int
+	Y int
+	S string
 }
 
 // func one(x *int) {
